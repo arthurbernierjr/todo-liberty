@@ -20,7 +20,7 @@ exports.create = async function create(req, res) {
 
 exports.update = async function update(req, res) {
     try {
-        const updatedTodo = await Todo.findOneAndUpdate({ _id: req.params.id },req.body, { new: true } )
+        const updatedTodo = await Todo.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true } )
         res.status(200).json(updatedTodo)
     } catch (error) {
         res.status(400).json({ msg: error.message })
@@ -39,9 +39,8 @@ exports.destroy = async function destroy(req, res) {
 
 exports.show = async function show(req, res) {
     try {
-    const foundTodo = await Todo.findOne({ _id: req.params.id })
-    res.status(200).json(foundTodo)
-
+        const foundTodo = await Todo.findOne({ _id: req.params.id })
+        res.status(200).json(foundTodo)
     } catch (error) {
         res.status(400).json({ msg: error.message })
     }
