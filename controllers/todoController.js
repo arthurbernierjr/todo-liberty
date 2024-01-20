@@ -72,8 +72,10 @@ exports.destroy = async function destroy(req, res) {
 exports.show = async function show(req, res) {
 // show 1 individual todo
     try {
-    
-} catch (error) {
-    
-}
+    const foundTodo = await Todo.findOne({ _id: req.params.id })
+    res.status(200).json(foundTodo)
+
+    } catch (error) {
+        res.status(400).json({ msg: error.message })
+    }
 }
